@@ -1,0 +1,32 @@
+---
+title: "BIMM143HW6_Function"
+author: "Hanqing Zhao"
+date: "10/17/2019"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+# The function for Question 6
+### This function is passed in a PDB name as string, and it analyzes the protein drug interaction and will plot the graph as output. We use this function by passing in the name of protein PDB data.
+```{r}
+library(bio3d)
+#Input a string which is the PDB data's name
+analysis <- function(name){
+  s <- read.pdb(name)
+  s.chainA <- trim.pdb(s, chain="A", elety="CA")
+  s.b <- s.chainA$atom$b
+  #The output is a plot of the Bfactor with relation of Residue
+  plotb3(s.b, sse=s.chainA, typ="l", ylab="Bfactor")
+}
+```
+### We pass in a name of PDB data to execute our function and get the plot:
+```{r}
+analysis("4AKE")
+```
+
+ 
