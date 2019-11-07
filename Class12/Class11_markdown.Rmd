@@ -1,0 +1,28 @@
+---
+title: "Class11"
+author: "Hanqing Zhao"
+date: "11/7/2019"
+output: html_document
+---
+## Structural Bioinformatics II
+
+```{r}
+library(bio3d)
+file.name <- get.pdb("1hsg")
+hiv <- read.pdb(file.name)
+hiv
+```
+# Prepare initial protein and ligand input file
+```{r}
+prot <- trim.pdb(hiv, "protein")
+lig <- trim.pdb(hiv, "ligand")
+write.pdb(prot, file="1hsg_protein.pdb")
+write.pdb(lig, file="1hsg_ligand.pdb")
+```
+
+```{r}
+library(bio3d)
+res <- read.pdb("all.pdbqt", multi=TRUE)
+write.pdb(res, "results.pdb")
+```
+
