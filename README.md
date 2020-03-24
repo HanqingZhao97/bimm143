@@ -1,2 +1,3 @@
 ## bimm143
-This is the readme of the bimm143 github.
+
+Using R studio in genome data analysis
